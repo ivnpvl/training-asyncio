@@ -15,5 +15,5 @@ def async_timed():
                 end = time()
                 total = end - start
                 print(f'Завершилась {func} за {total:.4f} секунд.')
-            return wrapped
-        return wrapper
+        return wrapped
+    return wrapper
