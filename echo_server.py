@@ -1,4 +1,4 @@
-import asyncio as aio
+import asyncio
 import socket as st
 from asyncio import AbstractEventLoop as AELoop
 
@@ -13,7 +13,7 @@ async def listen_for_connection(server_socket: st.socket, loop: AELoop):
         connection, client_address = await loop.sock_accept(server_socket)
         connection.setblocking(False)
         print(f'Получен запрос на подключение от {client_address}.')
-        aio.create_task(echo(connection, loop))
+        asyncio.create_task(echo(connection, loop))
 
 
 async def main():
@@ -23,7 +23,7 @@ async def main():
     server_socket.bind(server_address)
     server_socket.setblocking(False)
     server_socket.listen()
-    await listen_for_connection(server_socket, aio.get_event_loop())
+    await listen_for_connection(server_socket, asyncio.get_event_loop())
 
 
-aio.run(main())
+asyncio.run(main())
