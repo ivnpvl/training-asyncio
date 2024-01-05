@@ -58,3 +58,11 @@ SIZE_INSERT = \
     INSERT INTO product_size VALUES(2, 'Medium');
     INSERT INTO product_size VALUES(3, 'Large');
     """
+
+BRAND_INSERT = \
+    """
+    INSERT INTO brand VALUES(DEFAULT, 'Levis');
+    INSERT INTO brand VALUES(DEFAULT, 'Seven');
+    """
+
+BRAND_QUERY = 'SELECT brand_id, brand_name FROM brand;'
