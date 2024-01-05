@@ -1,7 +1,7 @@
 import asyncio
 import asyncpg
 
-import util.postgres_commands as pscmd
+import util.postgres_commands as pgcmd
 
 
 async def main():
@@ -15,15 +15,16 @@ async def main():
     version = connection.get_server_version()
     print(f'Подключено! Версия postgres равна {version}.')
     statements = [
-        pscmd.CREATE_BRAND_TABLE,
-        pscmd.CREATE_PRODUCT_TABLE,
-        pscmd.CREATE_PRODUCT_COLOR_TABLE,
-        pscmd.CREATE_PRODUCT_SIZE_TABLE,
-        pscmd.SIZE_INSERT,
-        pscmd.COLOR_INSERT,
+        pgcmd.CREATE_BRAND_TABLE,
+        pgcmd.CREATE_PRODUCT_TABLE,
+        pgcmd.CREATE_PRODUCT_COLOR_TABLE,
+        pgcmd.CREATE_PRODUCT_SIZE_TABLE,
+        pgcmd.SIZE_INSERT,
+        pgcmd.COLOR_INSERT,
     ]
     print('Создаётся база данных product...')
     for statement in statements:
+        print(statement)
         status = await connection.execute(statement)
         print(status)
     print('База данных product создана.')
